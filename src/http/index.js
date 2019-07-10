@@ -1,6 +1,6 @@
 // index.js 导入所以接口
 
-import apis from './interface'
+import apis from './api'
 
 const install = Vue => {
     if (install.installed)

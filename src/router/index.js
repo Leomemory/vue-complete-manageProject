@@ -3,12 +3,15 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/views/Login'
 import Home from '@/views/Home'
-import NotFound from '@/views/404'
+import NotFound from '@/views/Error/404'
 import Main from '@/views/Main'
-import User from '@/views/User'
-import Menu from '@/views/Menu'
-import Dept from '@/views/Dept'
-import Role from '@/views/Role'
+import User from '@/views/SysManage/User'
+import Menu from '@/views/SysManage/Menu'
+import Dept from '@/views/SysManage/Dept'
+import Role from '@/views/SysManage/Role'
+
+import Server from '@/views/Monitor/Server'
+import Task from '@/views/Monitor/Task'
 
 Vue.use(Router)
 
@@ -44,6 +47,14 @@ const router = new Router({
             path: '/role', 
             component: Role, 
             name: '角色管理' 
+         },{
+            path: '/server', 
+            component: Server, 
+            name: '服务监控' 
+         },{
+            path: '/task', 
+            component: Task, 
+            name: '任务监控'
          }
       ]
     },

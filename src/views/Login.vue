@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import mock from '@/mock/index.js';
 import Cookies from "js-cookie";
 export default {
   name: 'Login',
@@ -43,7 +42,8 @@ export default {
   methods:{
   	  login(){
   	  	  let userInfo = {account:this.loginForm.account, password:this.loginForm.password}
-	  	  this.$api.login(JSON.stringify(userInfo)).then((res) => {
+	  	  this.$api.login.login(JSON.stringify(userInfo)).then((res) => {
+	  	  	console.log(res)
 	        Cookies.set('token', res.data.token) // 放置token到Cookie
 	        sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
 	        this.$router.push('/')  // 登录成功，跳转到主页

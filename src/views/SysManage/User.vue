@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import dialog from '../components/dialog.vue'
+import dialog from '@/components/dialog.vue'
 export default {
 	components:{
 	    "t-dialog":dialog

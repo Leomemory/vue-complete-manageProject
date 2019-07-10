@@ -8,19 +8,19 @@
               <span slot="title">{{$t("sys.sysMng")}}</span>
             </template>
             <el-menu-item index="1-1" @click="$router.push('user')">{{$t("sys.userMng")}}</el-menu-item>
-            <el-menu-item index="1-2" @click="$router.push('/menu')">{{$t("sys.menuMng")}}</el-menu-item>
-            <el-menu-item index="1-3" @click="$router.push('/dept')">{{$t("sys.deptMng")}}</el-menu-item>
-            <el-menu-item index="1-4" @click="$router.push('/role')">{{$t("sys.roleMng")}}</el-menu-item>
+            <el-menu-item index="1-2" @click="$router.push('menu')">{{$t("sys.menuMng")}}</el-menu-item>
+            <el-menu-item index="1-3" @click="$router.push('dept')">{{$t("sys.deptMng")}}</el-menu-item>
+            <el-menu-item index="1-4" @click="$router.push('role')">{{$t("sys.roleMng")}}</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
                <i class="el-icon-menu"></i>
                <span slot="title">{{$t("sys.sysMonitor")}}</span>
             </template>
-            <el-menu-item index="2-1">{{$t("sys.ServiceMonitor")}}</el-menu-item>
-            <el-menu-item index="2-2">{{$t("sys.TaskMonitor")}}</el-menu-item>
+            <el-menu-item index="2-1" @click="$router.push('server')">{{$t("sys.ServiceMonitor")}}</el-menu-item>
+            <el-menu-item index="2-2" @click="$router.push('task')">{{$t("sys.TaskMonitor")}}</el-menu-item>
           </el-submenu>
-          <el-menu-item index="3" disabled>
+          <el-menu-item index="3">
             <i class="el-icon-document"></i>
             <span slot="title">{{$t("sys.Nav3")}}</span>
           </el-menu-item>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default{
 	props:{
 		isCollapse:{
@@ -40,6 +41,11 @@ export default{
 			default:false
 		}
 	},
+  computed:{
+    ...mapState({
+       menuTree:state=>state.menu.menuTree
+    })
+  },
 	methods:{
 		handleopen(key, keyPath){
 	      console.log(key, keyPath);
