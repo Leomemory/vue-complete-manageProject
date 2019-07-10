@@ -1,16 +1,17 @@
 <template>
-    <el-col :span="24" class="header">
+    <el-col :span="24" class="header" :style="{'background':themeColor}">
         <el-col :span="5" class="logo" :class="isCollapse?'logo-collapse-width':'logo-width'">
             <img :src="this.logo" /> {{isCollapse?sysName:sysName}}
         </el-col>
         <el-col :span="1">
-            <div class="tools" @click.prevent="collapse">
+            <!-- <div class="tools" @click.prevent="collapse">
                 <i class="el-icon-menu"></i>
-            </div>
+            </div> -->
+            <Hamburger :toggleClick="collapse" :isActive="isCollapse"></Hamburger>
         </el-col>
         <el-col :span="10">
             <div class="hearNavBar">
-              <el-menu :default-active="activeIndex" class="el-menu-demo" background-color="#4b5f6e" text-color="#fff"
+              <el-menu :default-active="activeIndex" class="el-menu-demo" :background-color="themeColor" text-color="#fff"
                   active-text-color="#ffd04b" mode="horizontal" @select="handleSelectHearNavBar">
                 <el-menu-item index="1" @click="$router.push('/')">{{$t("common.home")}}</el-menu-item>
                 <el-menu-item index="2">{{$t("common.msgCenter")}}</el-menu-item>
@@ -21,7 +22,7 @@
         <el-col :span="6" class="userinfo">
             <!-- 主题颜色切换 -->
             <span class="el-dropdown-link">
-               <theme-picker></theme-picker>
+               <theme-picker @onThemeChange="onThemeChange"></theme-picker>
             </span>
 
             <!-- 中英文语言切换 -->
@@ -43,6 +44,8 @@
 import ThemePicker from '@/components/ThemePicker'
 import LangSelector from '@/components/LangSelector'
 import mock from '@/mock/index.js'
+import {mapState} from 'vuex';
+import Hamburger from '@/components/Hamburger'
 export default {
     data(){
         return {
@@ -56,7 +59,8 @@ export default {
     },
     components:{
         ThemePicker,
-        LangSelector
+        LangSelector,
+        Hamburger
     },
     mounted(){
         this.sysName = 'Leo'
@@ -85,6 +89,15 @@ export default {
              this.$router.push("/login")
           }).catch(()=>{})
       },
+      // 设置 store 状态，保存共享主题色
+      onThemeChange(newThemeColor,oldThemeColor){
+        this.$store.dispatch("onThemeChange",{newThemeColor,oldThemeColor});
+      }
+    },
+    computed:{
+        ...mapState({
+            themeColor:state=>state.themeColor.newThemeColor
+        })
     }
 }
 </script>
@@ -125,7 +138,7 @@ export default {
       border-color: rgba(238, 241, 146, 0.5);
       border-right-width: 1px;
       border-right-style: solid;
-      background: #4b5f6e;
+      //background: #4b5f6e;
       text-align: left;
       img {
           width: 40px;
@@ -154,7 +167,7 @@ export default {
       cursor: pointer;
     }
     .hearNavBar {
-      background: #4b5f6e;
+      background: red;
       padding: 0px 0px;
       width: 100%;
       height: 60px;

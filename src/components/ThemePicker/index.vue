@@ -57,6 +57,10 @@ export default {
         if (typeof innerText !== 'string') return
         style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
       })
+
+      //响应外部操作，把变更的新旧主题色导出，绑定函数，即可在父组件中获取主题色
+      this.$emit('onThemeChange',val, oldVal)
+      
       this.$message({
         message: '换肤成功',
         type: 'success'
