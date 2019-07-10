@@ -2,7 +2,12 @@
     "common": {
         "home": "Home",
         "login": "Login",
-        "exit": "Exit"
+        "exit": "Exit",
+        "logout": "Logout",
+        "doc": "Document",
+        "msgCenter": "Message Center",
+        "myMsg": "My Message",
+        "config": "Config"
     },
     "sys": {
         "sysMng":"System Manage",
@@ -10,6 +15,11 @@
         "deptMng": "Dept Manage",
         "roleMng": "Role Manage",
         "menuMng": "Menu Manage",
-        "logMng": "Log Manage"
+        "logMng": "Log Manage",
+        "sysMonitor": "System Monitor",
+        "ServiceMonitor":"Service Monitor",
+        "TaskMonitor":"Task Monitor",
+        "Nav3":"nav3",
+        "Nav4":"nav4"
     }
 }
