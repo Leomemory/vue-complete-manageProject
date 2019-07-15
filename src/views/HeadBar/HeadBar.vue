@@ -33,6 +33,7 @@
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item>{{$t("common.myMsg")}}</el-dropdown-item>
                     <el-dropdown-item>{{$t("common.config")}}</el-dropdown-item>
+                    <el-dropdown-item @click.native="buttoncli">{{$t("common.toFullscreen")}}</el-dropdown-item>
                     <el-dropdown-item divided @click.native="logout">{{$t("common.logout")}}</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -46,6 +47,7 @@ import LangSelector from '@/components/LangSelector'
 import mock from '@/mock/index.js'
 import {mapState} from 'vuex';
 import Hamburger from '@/components/Hamburger'
+import screenfull from 'screenfull'
 export default {
     data(){
         return {
@@ -54,7 +56,8 @@ export default {
            sysName:'',
            activeIndex:'1',
            userAvatar:'',
-           userName:''
+           userName:'',
+           isFullscreen: false   //是否全屏展示
         }
     },
     components:{
@@ -92,7 +95,16 @@ export default {
       // 设置 store 状态，保存共享主题色
       onThemeChange(newThemeColor,oldThemeColor){
         this.$store.dispatch("onThemeChange",{newThemeColor,oldThemeColor});
-      }
+      },
+      buttoncli(){
+          if(!screenfull.enabled) { // 如果不允许进入全屏，发出不允许提示
+              this.$message({
+                message: '不支持全屏',
+                type: 'warning'
+              })
+              return false
+           }
+           screenfull.toggle();      }
     },
     computed:{
         ...mapState({
