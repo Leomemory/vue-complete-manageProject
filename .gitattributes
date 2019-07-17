@@ -1,2 +1,4 @@
-*.h linguist-language=vue
-*.m linguist-language=vue
+*.js linguist-language=vue 
+*.css linguist-language=vue
+*.html linguist-language=vue  
+*.vue linguist-language=vue
