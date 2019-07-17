@@ -64,13 +64,21 @@ export default{
 </script>
 
 <style lang="scss">
-.aside {
-  flex: 0 0 230px;
-  width: 230px;
-  .el-menu {
-    height: 100%;
-    text-align: left;
-  }
+
+.aside{
+    transition: width .28s;
+    width: 230px;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    z-index: 101;
+    background:#fff;
+    overflow: hidden;
+    .el-menu {
+      height: 100%;
+      text-align: left;
+    }
 }
 .logo-collapse-width{
   flex: 0 0 65px;

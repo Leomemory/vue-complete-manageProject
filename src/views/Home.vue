@@ -8,7 +8,7 @@
             <!-- 左侧导航菜单栏 -->
             <menu-bar :isCollapse="isCollap"></menu-bar>
             <!-- 右侧主内容区域 -->
-            <Main></Main>
+            <Main :isCollapse="isCollap"></Main>
         </el-col>
     </el-row>
   </div>
@@ -51,7 +51,6 @@ export default {
     position: absolute;
     top: 60px;  
     bottom: 0px;
-    overflow: hidden;
   }
 }
 </style>

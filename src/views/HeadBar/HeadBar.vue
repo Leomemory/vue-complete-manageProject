@@ -120,6 +120,11 @@ export default {
     line-height: 60px;
     background: #4b5f6e;
     color: #fff;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:101;
     .userinfo {
       text-align: right;
       padding-right: 15px;

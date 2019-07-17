@@ -6,7 +6,18 @@
 
 <script>
 export default {
-	
+	methods:{
+		getUser(){
+			this.$api.user.getUser().then(res=>{
+				console.log('success',res)
+			}).catch(err=>{
+				console.log(err)
+			})
+		}
+	},
+	created(){
+		this.getUser()
+	}
 }
 </script>
 
