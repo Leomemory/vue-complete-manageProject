@@ -20,7 +20,7 @@
         "sysMonitor": "系统监控",
         "ServiceMonitor":"服务监控",
         "TaskMonitor":"任务监控",
-        "Nav3":"导航三",
+        "clipboard":"剪贴板",
         "Nav4":"导航四"
     }
 }

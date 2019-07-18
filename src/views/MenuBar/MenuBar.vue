@@ -20,9 +20,9 @@
             <el-menu-item index="2-1" @click="$router.push('server')">{{$t("sys.ServiceMonitor")}}</el-menu-item>
             <el-menu-item index="2-2" @click="$router.push('task')">{{$t("sys.TaskMonitor")}}</el-menu-item>
           </el-submenu>
-          <el-menu-item index="3">
+          <el-menu-item index="3" @click="$router.push('clipboard')">
             <i class="el-icon-document"></i>
-            <span slot="title">{{$t("sys.Nav3")}}</span>
+            <span slot="title">{{$t("sys.clipboard")}}</span>
           </el-menu-item>
           <el-menu-item index="4">
             <i class="el-icon-setting"></i>
@@ -47,7 +47,7 @@ export default{
     })
   },
 	methods:{
-		handleopen(key, keyPath){
+		  handleopen(key, keyPath){
 	      console.log(key, keyPath);
 	    },
 	    handleclose(key, keyPath){

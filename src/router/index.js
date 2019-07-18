@@ -13,6 +13,8 @@ import Role from '@/views/SysManage/Role'
 import Server from '@/views/Monitor/Server'
 import Task from '@/views/Monitor/Task'
 
+import Clipboard from '@/views/clipboard'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -55,6 +57,10 @@ const router = new Router({
             path: '/task', 
             component: Task, 
             name: '任务监控'
+         },{
+            path: '/clipboard', 
+            component: Clipboard, 
+            name: '剪贴板'
          }
       ]
     },

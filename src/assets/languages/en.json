@@ -20,7 +20,7 @@
         "sysMonitor": "System Monitor",
         "ServiceMonitor":"Service Monitor",
         "TaskMonitor":"Task Monitor",
-        "Nav3":"nav3",
+        "clipboard":"clipboard",
         "Nav4":"nav4"
     }
 }
