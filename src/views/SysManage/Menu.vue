@@ -18,11 +18,18 @@
 			    <el-button type="primary" @click="onSubmit">查询</el-button>
 			</el-form-item>
 		</el-form>
+
+		<!-- vue-area-linkage联动组件实现 -->  <!-- type有三种类型，all,text,code,可指定后打印出 -->
+		<area-select v-model="selected" :data="pca" :level="1" type="text"  @change="getChangeVal"></area-select>
+
+		<!-- pca表示二级联动，pcaa表示三级联动 -->
+		<area-select v-model="selecteds" :data="pcaa" :level="2" type="all" @change="changeArea"></area-select>
       </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { pca, pcaa } from 'area-data';
 export default{
 	data(){
 		return{
@@ -32,7 +39,12 @@ export default{
 				city:''
 			},
 			provinces:[],
-			cities:[]
+			cities:[],
+
+			selected:[],
+			selecteds:[],
+			pca: pca,
+			pcaa: pcaa
 		}
 	},
 	methods:{
@@ -59,6 +71,12 @@ export default{
 		},
 		onSubmit(){
 			console.log(this.formInline)
+		},
+		getChangeVal(cal){
+			console.log(cal);
+		},
+		changeArea(val){
+			console.log(val);
 		}
 	},
 	created(){

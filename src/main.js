@@ -19,6 +19,10 @@ import '../theme/index.css'
 
 import store from './store'
 
+import vueAreaLinkage from 'vue-area-linkage'
+import 'vue-area-linkage/dist/index.css'
+Vue.use(vueAreaLinkage)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
