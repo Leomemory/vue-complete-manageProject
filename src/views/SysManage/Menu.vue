@@ -1,6 +1,6 @@
 <template>
 	<!-- Menu page -->
-	<div>
+	<div class="page">
 	   <span>简易省市二级联动</span>		
        <el-form :inline="true" :model="formInline">
 			<el-select v-model="formInline.province" placeholder = "请选择" @change="choseProvince">
@@ -67,6 +67,7 @@
 
         <br><br>
 
+        <span>图片预览组件封装</span>
         <el-table style="width: 60%;margin: 0 auto;" :data="tableData">
             <el-table-column
                 label="注册时间">
@@ -89,12 +90,29 @@
 	        </template>
 	      </el-table-column>
         </el-table>
+
+        <br><br>
+
+        <span>导入excel文件</span>
+		<el-upload
+		  class="upload-demo"
+		  action="https://jsonplaceholder.typicode.com/posts/"
+		  :on-preview="handlePreview"
+		  :on-remove="handleRemove"
+		  :before-remove="beforeRemove"
+		  multiple
+		  :limit="3"
+		  :on-exceed="handleExceed"
+		  :file-list="fileList">
+		  <el-button size="small" type="primary">点击上传</el-button>
+		</el-upload>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import { pca, pcaa } from 'area-data';
+import XLSX from 'xlsx'
 export default{
 	data(){
 		return{
@@ -147,7 +165,9 @@ export default{
 	        	name:'李四',
 	        	content:'后会有期',
 	        	images:[require('@/assets/201907220946.jpg'),require('@/assets/201907220947.jpg'),require('@/assets/201907220945.jpg')]
-	        }]
+	        }],
+
+	        fileList:[]
 		}
 	},
 	methods:{
@@ -183,7 +203,19 @@ export default{
 		},
         onSearch(){
 			console.log(this.times);
-		}
+		},
+		handleRemove(file, fileList) {
+	        console.log('handleRemove信息',file, fileList);
+	    },
+	    handlePreview(file) {
+	        console.log('handlePreview信息',file);
+	    },
+	    handleExceed(files, fileList) {
+	        this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+	    },
+	    beforeRemove(file, fileList) {
+	        return this.$confirm(`确定移除 ${ file.name }？`);
+	    }
 	},
 	created(){
 		this.getCityData()
@@ -202,6 +234,14 @@ export default{
   }
 </script>
 
-<style>
-	
+<style lang="scss" scoped>
+.page{
+	& > span{
+		font-size:18px;
+	}
+	.upload-demo{
+		width:40%;
+		margin:0 auto;
+	}
+}
 </style>

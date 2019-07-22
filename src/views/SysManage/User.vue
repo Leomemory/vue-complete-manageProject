@@ -16,11 +16,14 @@
 			<el-form-item>
 				<el-button type="primary" @click="handleAdd">新增</el-button>
 			</el-form-item>
+			<el-form-item>
+				<el-button type="primary" @click="exportExcel">导出</el-button>
+			</el-form-item>
 		</el-form>
 	</el-col>
 
 			<!--列表-->
-	<el-table :data="users" highlight-current-row @selection-change="selsChange" style="width: 100%;">
+	<el-table id="rebateSetTable" :data="users" highlight-current-row @selection-change="selsChange" style="width: 100%;">
 		<el-table-column type="selection" width="55"></el-table-column>
 		<el-table-column type="index" width="60"></el-table-column>
 		<el-table-column prop="name" label="姓名">
@@ -82,6 +85,8 @@
 <script>
 // import dialog from '@/components/dialog.vue'
 import utils from '@/utils/table'
+import FileSaver from 'file-saver'
+import XLSX from 'xlsx'
 export default {
 	data(){
 		return{
@@ -251,8 +256,23 @@ export default {
 	    			}).catch(err=>{console.log(err)})
 	    		}
 	    	})
-	    }
-
+	    },
+	    //导出功能
+	    exportExcel () {
+	    	this.$nextTick(function(){
+	    		/* generate workbook object from table */
+	            let wb = XLSX.utils.table_to_book(document.querySelector('#rebateSetTable'));  //表格的id名
+	            /* get binary string as output */
+	            let wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'array' });
+	            try {
+	                FileSaver.saveAs(new Blob([wbout], { type: 'application/octet-stream' }), '我的用户利表.xlsx');
+	            } catch (e){
+	                if (typeof console !== 'undefined')
+	                    console.log(e, wbout)
+	            }
+	            return wbout
+	    	})
+        }
 	},
 	mounted(){
 		this.getUsers()
