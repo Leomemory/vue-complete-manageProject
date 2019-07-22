@@ -64,6 +64,31 @@
         	<span style="flex: 1" v-if="times.value1">{{times.value1 | formDate}}</span> 
             <span style="flex: 1" v-if="times.value2">{{times.value2 | formDate}}</span>
         </p>
+
+        <br><br>
+
+        <el-table style="width: 60%;margin: 0 auto;" :data="tableData">
+            <el-table-column
+                label="注册时间">
+                <template slot-scope="scope">
+                    {{ scope.row.created}}
+                </template>
+            </el-table-column>
+             <el-table-column
+                label="姓名">
+                <template slot-scope="scope">
+                    {{ scope.row.name}}
+                </template>
+            </el-table-column>
+        	<el-table-column
+		        label="评论内容"
+		      >
+	        <template slot-scope="scope">
+	          <span v-html="scope.row.content"></span>
+	          <el-button v-if="scope.row.images.length>0" :data-img="scope.row.images" type="text" size="small" @click="$imgPreview">查看图片</el-button>
+	        </template>
+	      </el-table-column>
+        </el-table>
     </div>
 </template>
 
@@ -110,7 +135,19 @@ export default{
 			              return time.getTime() > Date.now() + 24*3600*1000;
 			          }
 	            }
-	        }
+	        },
+
+	        tableData:[{
+	        	created:'2019-07-21',
+	        	name:'章三',
+	        	content:'金融头条',
+	        	images:require('@/assets/201907220945.jpg')
+	        },{
+	        	created:'2019-07-22',
+	        	name:'李四',
+	        	content:'后会有期',
+	        	images:[require('@/assets/201907220946.jpg'),require('@/assets/201907220947.jpg'),require('@/assets/201907220945.jpg')]
+	        }]
 		}
 	},
 	methods:{

@@ -23,6 +23,9 @@ import vueAreaLinkage from 'vue-area-linkage'
 import 'vue-area-linkage/dist/index.css'
 Vue.use(vueAreaLinkage)
 
+import imgPreview from '@/components/imgPreview'
+Vue.use(imgPreview)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
