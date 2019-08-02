@@ -39,6 +39,12 @@ export default {
         checked: true
   	}
   },
+  watch:{
+  	$route(to, from) {
+        this.fromRouter = from.toPath
+        console.log('fromRouter', this.fromRouter)
+    }
+  },
   methods:{
   	  login(){
   	  	  let userInfo = {account:this.loginForm.account, password:this.loginForm.password}
@@ -46,7 +52,12 @@ export default {
 	  	  	console.log(res)
 	        Cookies.set('token', res.data.token) // 放置token到Cookie
 	        sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
-	        this.$router.push('/')  // 登录成功，跳转到主页
+	        // this.$router.push('/')  // 登录成功，跳转到主页
+	        if (this.fromRouter) {
+                this.$router.push(this.fromRouter)
+            } else {
+                this.$router.push('/home')
+            }
 	      }).catch(err => {
 	        alert(err);
 	      });

@@ -13,7 +13,7 @@
             <div class="hearNavBar">
               <el-menu :default-active="activeIndex" class="el-menu-demo" :background-color="themeColor" text-color="#fff"
                   active-text-color="#ffd04b" mode="horizontal" @select="handleSelectHearNavBar">
-                <el-menu-item index="1" @click="$router.push('/')">{{$t("common.home")}}</el-menu-item>
+                <el-menu-item index="1" @click="$router.push('/home')">{{$t("common.home")}}</el-menu-item>
                 <el-menu-item index="2">{{$t("common.msgCenter")}}</el-menu-item>
                 <el-menu-item index="3">{{$t("common.doc")}}</el-menu-item>
               </el-menu>
@@ -89,7 +89,7 @@ export default {
              type:'warning'
           }).then(()=>{
              sessionStorage.removeItem('user');
-             this.$router.push("/login")
+             this.$router.push('/login')
           }).catch(()=>{})
       },
       // 设置 store 状态，保存共享主题色

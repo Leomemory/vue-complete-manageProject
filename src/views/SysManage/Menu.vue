@@ -106,6 +106,15 @@
 		  :file-list="fileList">
 		  <el-button size="small" type="primary">点击上传</el-button>
 		</el-upload>
+
+		<br><br>
+
+		<span>el-radio点击取消选中</span>
+		<div>
+			<el-radio-group v-model="sel_radio">
+	     	    <el-radio border v-for="item in radioItem" :key="item.id" :label="item.en" @click.native.prevent="clickitem(item.en)">{{item.label}}</el-radio>
+			</el-radio-group>
+		</div>
     </div>
 </template>
 
@@ -167,7 +176,15 @@ export default{
 	        	images:[require('@/assets/201907220946.jpg'),require('@/assets/201907220947.jpg'),require('@/assets/201907220945.jpg')]
 	        }],
 
-	        fileList:[]
+	        fileList:[],
+
+	        sel_radio:null,
+	        radioItem:[
+	          {label: "今天", en: 'today'},
+	          {label: "昨天", en: 'yesterday'},
+	          {label: "近七天", en: 'week'},
+	          {label: "近三十天", en: 'month'}
+	        ],
 		}
 	},
 	methods:{
@@ -215,6 +232,10 @@ export default{
 	    },
 	    beforeRemove(file, fileList) {
 	        return this.$confirm(`确定移除 ${ file.name }？`);
+	    },
+	    //radio点击取消
+	    clickitem(val){
+	    	val  ===this.sel_radio ? this.sel_radio = null : this.sel_radio = val
 	    }
 	},
 	created(){

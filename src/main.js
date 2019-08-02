@@ -17,6 +17,8 @@ Vue.use(api)
 // 引入主题色切换
 import '../theme/index.css'
 
+import '@/styles/reset.css'
+
 import store from './store'
 
 import vueAreaLinkage from 'vue-area-linkage'

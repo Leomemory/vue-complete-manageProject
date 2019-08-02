@@ -30,35 +30,35 @@ const router = new Router({
       component: Home,
       children:[
          {
-            path:'',
+            path:'/home',
             component:Main,
             name:'总统介绍'
          },{
-            path:'/user',
+            path:'user',
             component:User,
             name:'用户管理'
          },{
-            path:'/menu',
+            path:'menu',
             component:Menu,
             name:'菜单管理'
          },{ 
-            path: '/dept', 
+            path: 'dept', 
             component: Dept, 
             name: '机构管理' 
          },{ 
-            path: '/role', 
+            path: 'role', 
             component: Role, 
             name: '角色管理' 
          },{
-            path: '/server', 
+            path: 'server', 
             component: Server, 
             name: '服务监控' 
          },{
-            path: '/task', 
+            path: 'task', 
             component: Task, 
             name: '任务监控'
          },{
-            path: '/clipboard', 
+            path: 'clipboard', 
             component: Clipboard, 
             name: '剪贴板'
          }
@@ -82,14 +82,14 @@ router.beforeEach((to, from, next)=>{
     if(to.path == '/login'){
         //若访问登录界面
         if(user){
-            next({path:'/'})
+            next('/home')
         }else{
             next()
         }
     }else{
       //若访问非登录界面
       if(!user){
-          next({path:'/login'})
+          next('/login')
       }else{
           next()
       }
