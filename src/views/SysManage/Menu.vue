@@ -13,8 +13,7 @@
 	            <el-option v-for="item in cities" :value="item.code" :label="item.name" :key = "item.code">
 	            	
 	            </el-option>
-	        </el-select>
-
+	        </el-select>	        
 	        <el-form-item>
 			    <el-button type="primary" @click="onSubmit">查询</el-button>
 			</el-form-item>
@@ -115,6 +114,11 @@
 	     	    <el-radio border v-for="item in radioItem" :key="item.id" :label="item.en" @click.native.prevent="clickitem(item.en)">{{item.label}}</el-radio>
 			</el-radio-group>
 		</div>
+		<div class="show">我的选择是： <span>{{this.sel_radio}}</span></div>
+
+		<br><br>
+
+
     </div>
 </template>
 
@@ -184,8 +188,8 @@ export default{
 	          {label: "昨天", en: 'yesterday'},
 	          {label: "近七天", en: 'week'},
 	          {label: "近三十天", en: 'month'}
-	        ],
-		}
+	        ]	
+	    }
 	},
 	methods:{
 		getCityData(){

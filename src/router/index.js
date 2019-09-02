@@ -26,11 +26,11 @@ const router = new Router({
     // }
     {
       path: '/',
-      name: '首页',
       component: Home,
+      name: '首页',
       children:[
          {
-            path:'/home',
+            path:'home',
             component:Main,
             name:'总统介绍'
          },{
@@ -73,6 +73,10 @@ const router = new Router({
       path: '/404',
       name: '未找到',
       component: NotFound
+    },
+    {
+      path: '*',
+      redirect: '/404'
     }
   ]
 })
