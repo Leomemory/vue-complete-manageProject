@@ -44,6 +44,9 @@
 
 	<hr>
 
+	<h3>地图🇨🇳</h3>
+	<china-map :mapflag="mapflag"></china-map>
+	<world-map :mapflag="mapflag"></world-map>
   </div>
 </template>
 
@@ -54,6 +57,8 @@ import _ from 'lodash'
 import { schoolInfo } from '@/utils/schoolinfo';
 import { checkChinese } from '@/utils/schoolReg';
 
+import chinaMap from '@/components/EchartsMap/ChinaMap';
+import worldMap from '@/components/EchartsMap/worldMap';
 export default {
   name: 'dept',
   data () {
@@ -68,8 +73,13 @@ export default {
         schoolName: '',
         showSchool: [],
 	    detailInfo: {},
-	    isActive: false
+	    isActive: false,
+	    mapflag:''
     }
+  },
+  components:{
+  	chinaMap,
+  	worldMap
   },
   computed: {
     classObject: function () {
@@ -151,10 +161,16 @@ export default {
 	    this.showSchool = midValue
     },
     selectValue(item){
-    	if (!item) return;
-
-    	this.schoolName = item.name
-    	this.isActive = false;
+    	if (!item){
+    		return false;
+    	}else{
+    		this.mapflag= item;
+	    	localStorage.setItem("WhereInfo",JSON.stringify(item))
+	    	this.schoolName = item.name
+	    	localStorage.setItem("schoolName",item.name)
+	    	this.isActive = false;
+    	}
+    	// console.log(item);
     }
   }
 }
