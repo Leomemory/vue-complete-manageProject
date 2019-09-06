@@ -11,6 +11,8 @@
             <el-menu-item index="/menu" @click="$router.push('/menu')">{{$t("sys.menuMng")}}</el-menu-item>
             <el-menu-item index="/dept" @click="$router.push('/dept')">{{$t("sys.deptMng")}}</el-menu-item>
             <el-menu-item index="/role" @click="$router.push('/role')">{{$t("sys.roleMng")}}</el-menu-item>
+            <el-menu-item index="/material" @click="$router.push('/material')">{{$t("sys.materialMng")}}</el-menu-item>
+            <el-menu-item index="/log" @click="$router.push('/log')">{{$t("sys.logMng")}}</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">

@@ -9,6 +9,8 @@ import User from '@/views/SysManage/User'
 import Menu from '@/views/SysManage/Menu'
 import Dept from '@/views/SysManage/Dept'
 import Role from '@/views/SysManage/Role'
+import Material from '@/views/SysManage/Material'
+import Log from '@/views/SysManage/Log'
 
 import Server from '@/views/Monitor/Server'
 import Task from '@/views/Monitor/Task'
@@ -49,6 +51,14 @@ const router = new Router({
             path: 'role', 
             component: Role, 
             name: '角色管理' 
+         },{
+            path:'material',
+            component:Material,
+            name:'素材管理'
+         },{
+            path:'log',
+            component:Log,
+            name:'日志管理'
          },{
             path: 'server', 
             component: Server, 

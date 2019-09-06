@@ -16,6 +16,7 @@
         "deptMng": "Dept Manage",
         "roleMng": "Role Manage",
         "menuMng": "Menu Manage",
+        "materialMng":"Material Manage",
         "logMng": "Log Manage",
         "sysMonitor": "System Monitor",
         "ServiceMonitor":"Service Monitor",

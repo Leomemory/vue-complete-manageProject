@@ -16,6 +16,7 @@
         "deptMng": "机构管理",
         "roleMng": "角色管理",
         "menuMng": "菜单管理",
+        "materialMng":"素材管理",
         "logMng": "日志管理",
         "sysMonitor": "系统监控",
         "ServiceMonitor":"服务监控",
